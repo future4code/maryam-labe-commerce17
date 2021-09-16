@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
+import Carrinho from './components/Carrinho/carrinho-Itens';
 import Filtro from './components/Filtro/filtro';
 import Main from './components/Home/main';
 
@@ -59,13 +60,20 @@ class App extends React.Component {
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
         />
-
+        <Carrinho />
         
       </div>
 
     );
   }
-
-}
-
 export default App;
+
+
+
+
+
+
+
+
+
+
