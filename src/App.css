@@ -1,16 +1,9 @@
 
-/* .App {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-} */
 *{
   margin: 0%;
   padding: 0%;
 }
-
+/* CARRINHO vv-------------------------- */
 header{
   display: flex;
   flex-direction: column;
@@ -22,12 +15,20 @@ header{
   margin: 15px;
 }
 
+span{
+  display: flex;
+  margin-bottom: 20px;
+  
+}
+
 h2{
   margin:20px;
 }
-p{
-  margin:20px;
+span>p{
+  margin-right: 10px;
 }
 button{
-  margin:20px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
+/* CARRINHO ^^-------------------------- */
