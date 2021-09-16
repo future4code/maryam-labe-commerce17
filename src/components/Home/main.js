@@ -1,46 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
+import { listaDeProdutos } from './listaDeProdutos';
+import ProdutosCard from './ProdutosCard';
 
 const MainContainer = styled.section`
     border: 1px solid black;
     width: 60%;
     margin: 8px;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
 `
 
-const produtos = [
-    {
-        nome: "meteorito azul",
-        preco: 530
-    },
-    {
-        nome: "meteorito rochoso",
-        preco: 80
-    },
-    {
-        nome: "meteorito roxo",
-        preco: 850
-    },
-    {
-        nome: "meteorito vermelho",
-        preco: 610
-    },
-    {
-        nome: "meteorito rosa",
-        preco: 790
-    }
-  ]
+
 
 
 function Main(props) {
     
+    const adicionarAoCarrinho = (produto) => {
+        console.log(produto)
+    }
     return (
         <MainContainer >
-
+            <div>
+                <h3>Quantidade de produtos: {listaDeProdutos.length} </h3>
+                <select>
+                    <option>Crescente</option>
+                    <option>Decrescente</option>
+                </select>
+            </div>
+            <div>
+                {
+                    listaDeProdutos.map((produto) => {
+                        return <ProdutosCard
+                            key={produto.id}
+                            cardImagem={produto.imagemUrl}
+                            cardNome={produto.nome}
+                            cardPreco={produto.preco}
+                            onClickButton={() => adicionarAoCarrinho(produto)}
+                        />
+                    })
+                }
+            </div>
             <p>Produtos</p>
-            <ul>{produtos
+            <ul>{listaDeProdutos
                 .filter((produto) => {
                     return produto.nome.toLowerCase().includes(props.busca.toLowerCase())
                 })
@@ -58,7 +60,8 @@ function Main(props) {
                             return produtoAtual.nome.localeCompare(produtoProximo.nome);
                         case "menorPreco":
                             return -1 * (produtoProximo.preco - produtoAtual.preco);
-
+                        default:
+                            return null
                     }
                 })
                 .map((produto) => {

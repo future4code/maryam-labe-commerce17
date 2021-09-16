@@ -4,9 +4,7 @@ import './App.css';
 import Carrinho from './components/Carrinho/carrinho-Itens';
 import Filtro from './components/Filtro/filtro';
 import Main from './components/Home/main';
-
-
-
+import ProdutosCard from './components/Home/ProdutosCard'
 
 class App extends React.Component {
   state = {
@@ -37,8 +35,6 @@ class App extends React.Component {
     return (
       <div>
 
-
-
         <Filtro
           busca={this.state.busca}
           atualizaBusca={this.atualizaBusca}
@@ -60,20 +56,13 @@ class App extends React.Component {
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
         />
+
         <Carrinho />
         
       </div>
 
     );
-  }
+  };
+}
+
 export default App;
-
-
-
-
-
-
-
-
-
-
