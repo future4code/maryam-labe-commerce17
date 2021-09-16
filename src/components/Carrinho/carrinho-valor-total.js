@@ -7,7 +7,5 @@ export default function ValorTotal() {
 		<span>
             <p>Valor total:R${valor},00</p>
         </span>
-        
-        
 	</div>
 }

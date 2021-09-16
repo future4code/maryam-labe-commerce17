@@ -31,7 +31,7 @@ const produtos = [
         nome: "meteorito rosa",
         preco: 790
     }
-  ]
+]
 
 
 function Main(props) {
