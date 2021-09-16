@@ -9,11 +9,34 @@ import Main from './components/Home/main';
 
 
 class App extends React.Component {
+
   state = {
     busca: "",
     precoMinimo: "",
     precoMaximo: "",
-    ordenacao: "maiorPreco"
+    ordenacao: "maiorPreco",
+    produtos : [
+    {
+        nome: "meteorito azul",
+        preco: 530
+    },
+    {
+        nome: "meteorito rochoso",
+        preco: 80
+    },
+    {
+        nome: "meteorito roxo",
+        preco: 850
+    },
+    {
+        nome: "meteorito vermelho",
+        preco: 610
+    },
+    {
+        nome: "meteorito rosa",
+        preco: 790
+    }
+]
   }
 
   atualizaBusca = (event) => {
@@ -60,12 +83,13 @@ class App extends React.Component {
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
         />
-        <Carrinho />
+        <Carrinho produtos={this.state.produtos}/>
         
       </div>
 
     );
   }
+}
 export default App;
 
 
