@@ -11,9 +11,6 @@ const MainContainer = styled.section`
     flex-direction: column;   
 `
 
-
-
-
 function Main(props) {
     
     const adicionarAoCarrinho = (produto) => {
