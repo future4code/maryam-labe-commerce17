@@ -12,7 +12,29 @@ class App extends React.Component {
     busca: "",
     precoMinimo: "",
     precoMaximo: "",
-    ordenacao: "maiorPreco"
+    ordenacao: "maiorPreco",
+    produtos: [
+      {
+          nome: "meteorito azul",
+          preco: 530
+      },
+      {
+          nome: "meteorito rochoso",
+          preco: 80
+      },
+      {
+          nome: "meteorito roxo",
+          preco: 850
+      },
+      {
+          nome: "meteorito vermelho",
+          preco: 610
+      },
+      {
+          nome: "meteorito rosa",
+          preco: 790
+      }
+    ]
   }
 
   atualizaBusca = (event) => {
@@ -47,6 +69,7 @@ class App extends React.Component {
           atualizaPrecoMaximo={this.atualizaPrecoMaximo}
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
+          produtos={this.state.produtos}
         />
 
         <Main
@@ -58,6 +81,7 @@ class App extends React.Component {
           atualizaPrecoMaximo={this.atualizaPrecoMaximo}
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
+          produtos={this.state.produtos}
         />
 
         

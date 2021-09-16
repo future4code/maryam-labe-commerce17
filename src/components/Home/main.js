@@ -10,28 +10,7 @@ const MainContainer = styled.section`
     
 `
 
-const produtos = [
-    {
-        nome: "meteorito azul",
-        preco: 530
-    },
-    {
-        nome: "meteorito rochoso",
-        preco: 80
-    },
-    {
-        nome: "meteorito roxo",
-        preco: 850
-    },
-    {
-        nome: "meteorito vermelho",
-        preco: 610
-    },
-    {
-        nome: "meteorito rosa",
-        preco: 790
-    }
-  ]
+
 
 
 function Main(props) {
@@ -40,7 +19,7 @@ function Main(props) {
         <MainContainer >
 
             <p>Produtos</p>
-            <ul>{produtos
+            <ul>{props.produtos
                 .filter((produto) => {
                     return produto.nome.toLowerCase().includes(props.busca.toLowerCase())
                 })
