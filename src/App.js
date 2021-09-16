@@ -1,20 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
+import Carrinho from './components/Carrinho/carrinho-Itens';
 
 
-const carrinhoTitulo = styled.header`
-border: 10px solid black;
-`
 
 function App() {
   return (
     <div>
-      <header>
-        <h2>Carrinho:</h2>
-        <button>Remover</button>
-        <p>Valor total:R$ ,00</p>
-      </header>
+      <Carrinho></Carrinho>
     </div>
   );
 }
