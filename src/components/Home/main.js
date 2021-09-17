@@ -11,6 +11,8 @@ const MainContainer = styled.section`
     flex-direction: column;   
 `
 
+
+
 function Main(props) {
     
     const adicionarAoCarrinho = (produto) => {
@@ -39,7 +41,9 @@ function Main(props) {
                 }
             </div>
             <p>Produtos</p>
-            <ul>{listaDeProdutos
+
+            <ul>{props.produtos
+
                 .filter((produto) => {
                     return produto.nome.toLowerCase().includes(props.busca.toLowerCase())
                 })

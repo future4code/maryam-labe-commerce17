@@ -34,7 +34,8 @@ class App extends React.Component {
         nome: "meteorito rosa",
         preco: 790
     }
-]
+  ]
+
   }
 
   atualizaBusca = (event) => {
@@ -67,6 +68,7 @@ class App extends React.Component {
           atualizaPrecoMaximo={this.atualizaPrecoMaximo}
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
+          produtos={this.state.produtos}
         />
 
         <Main
@@ -78,6 +80,7 @@ class App extends React.Component {
           atualizaPrecoMaximo={this.atualizaPrecoMaximo}
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
+          produtos={this.state.produtos}
         />
         <Carrinho produtos={this.state.produtos}/>
         
@@ -85,5 +88,7 @@ class App extends React.Component {
 
     );
   }
+
+}  
 }
 export default App;
