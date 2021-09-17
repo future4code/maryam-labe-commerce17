@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const FiltroContainer = styled.section`
     border: 1px solid black;
-    width: 15%;
     margin: 8px;
     display: flex;
     flex-direction: column;

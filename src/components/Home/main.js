@@ -4,14 +4,11 @@ import { listaDeProdutos } from './listaDeProdutos';
 import ProdutosCard from './ProdutosCard';
 
 const MainContainer = styled.section`
-    border: 1px solid black;
-    width: 60%;
+    border: 1px solid black; 
     margin: 8px;
-    display: flex;
-    flex-direction: column;   
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 `
-
-
 
 function Main(props) {
     
@@ -20,14 +17,10 @@ function Main(props) {
     }
     return (
         <MainContainer >
-            <div>
+            {/* <div>
                 <h3>Quantidade de produtos: {listaDeProdutos.length} </h3>
-                <select>
-                    <option>Crescente</option>
-                    <option>Decrescente</option>
-                </select>
-            </div>
-            <div>
+            </div> */}
+            
                 {
                     listaDeProdutos.map((produto) => {
                         return <ProdutosCard
@@ -39,10 +32,10 @@ function Main(props) {
                         />
                     })
                 }
-            </div>
-            <p>Produtos</p>
+            
+            {/* <p>Produtos</p> */}
 
-            <ul>{props.produtos
+            {/* <ul>{props.produtos
 
                 .filter((produto) => {
                     return produto.nome.toLowerCase().includes(props.busca.toLowerCase())
@@ -71,7 +64,7 @@ function Main(props) {
                     )
                 })
             }
-            </ul>
+            </ul> */}
         </MainContainer>
     )
 }

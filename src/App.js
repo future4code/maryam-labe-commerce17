@@ -6,6 +6,14 @@ import Filtro from './components/Filtro/filtro';
 import Main from './components/Home/main';
 import ProdutosCard from './components/Home/ProdutosCard'
 
+
+const AppGrid = styled.div`
+display: grid;
+grid-template-columns: 1fr 3fr 1fr;
+
+
+`
+
 class App extends React.Component {
 
   state = {
@@ -57,7 +65,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <AppGrid>
 
         <Filtro
           busca={this.state.busca}
@@ -84,11 +92,11 @@ class App extends React.Component {
         />
         <Carrinho produtos={this.state.produtos}/>
         
-      </div>
+      </AppGrid>
 
     );
   }
 
 }  
-}
+
 export default App;
