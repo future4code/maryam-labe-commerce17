@@ -1,41 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
-import { listaDeProdutos } from './listaDeProdutos';
-import ProdutosCard from './ProdutosCard';
+// import ProdutosCard from './ProdutosCard';
 
 const MainContainer = styled.section`
     border: 1px solid black; 
-    margin: 8px;
+    margin: 4px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-row: 1fr 1fr;
+    grid-template-columns: 2fr 3fr 1fr;
 `
+
+const CardImag = styled.img`
+width: 200px;
+height: auto;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+
+
+:hover {
+    box-shadow: 0 1px 5px;
+}
+`
+const ProdutoGeral = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin-bottom: 8px;
+padding: 5px;
+`
+
+function ProdutosCard({produto}) {
+    console.log()
+    return (
+        <ProdutoGeral>
+            <CardImag src={produto.imagemUrl} alt={produto.nome}/>
+            <div>
+                <h4>{produto.nome}</h4>
+                <p>{produto.preco}</p>
+            </div>
+            <button onClick={produto.adicionarAoCarrinho}>Adicionar ao carrinho</button>
+        </ProdutoGeral>
+    )
+}
 
 function Main(props) {
     
-    const adicionarAoCarrinho = (produto) => {
-        console.log(produto)
-    }
     return (
         <MainContainer >
             {/* <div>
                 <h3>Quantidade de produtos: {listaDeProdutos.length} </h3>
             </div> */}
             
-                {
-                    listaDeProdutos.map((produto) => {
-                        return <ProdutosCard
-                            key={produto.id}
-                            cardImagem={produto.imagemUrl}
-                            cardNome={produto.nome}
-                            cardPreco={produto.preco}
-                            onClickButton={() => adicionarAoCarrinho(produto)}
-                        />
-                    })
-                }
-            
             {/* <p>Produtos</p> */}
 
-            {/* <ul>{props.produtos
+            {props.produtos
 
                 .filter((produto) => {
                     return produto.nome.toLowerCase().includes(props.busca.toLowerCase())
@@ -60,11 +82,13 @@ function Main(props) {
                 })
                 .map((produto) => {
                     return (
-                        <li>{produto.nome}-{produto.preco}</li>
+                        <div>
+                            {<ProdutosCard produto={produto} />}
+                        </div>
                     )
                 })
             }
-            </ul> */}
+           
         </MainContainer>
     )
 }
