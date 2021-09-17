@@ -33,7 +33,7 @@ margin-bottom: 8px;
 padding: 5px;
 `
 
-function ProdutosCard({produto}) {
+function ProdutosCard({produto, onClick}) {
     console.log()
     return (
         <ProdutoGeral>
@@ -42,10 +42,11 @@ function ProdutosCard({produto}) {
                 <h4>{produto.nome}</h4>
                 <p>{produto.preco}</p>
             </div>
-            <button onClick={produto.adicionarAoCarrinho}>Adicionar ao carrinho</button>
+            <button >Adicionar ao carrinho</button>
         </ProdutoGeral>
     )
-}
+ }
+// onClick={this.onClick}
 
 function Main(props) {
     
@@ -83,12 +84,11 @@ function Main(props) {
                 .map((produto) => {
                     return (
                         <div>
-                            {<ProdutosCard produto={produto} />}
+                            {<ProdutosCard produto={produto} onClick={()=>props.onClick(produto)} />}
                         </div>
                     )
                 })
             }
-           
         </MainContainer>
     )
 }

@@ -27,6 +27,7 @@ function Filtro(props) {
 
             <label htmlFor="valorMinimo">Valor Mínimo:</label>
             <input
+                type="number"
                 name="valorMinimo"
 
                 value={props.precoMinimo}
@@ -35,6 +36,7 @@ function Filtro(props) {
             
             <label htmlFor="valorMaximo">Valor Máximo:</label>
             <input
+                type="number"
                 name="valorMaximo"
 
                 value={props.precoMaximo}
