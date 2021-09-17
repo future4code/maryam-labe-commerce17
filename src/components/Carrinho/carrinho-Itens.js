@@ -10,6 +10,7 @@ export default function Carrinho (props) {
             return (
 				<div className="containerCarrinho">
 				<p>{produto.nome} R${produto.preco},00</p>
+				{produto.contador}
 				<button>Remover</button>
 				</div>
             )}

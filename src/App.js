@@ -27,43 +27,49 @@ class App extends React.Component {
     precoMinimo: "",
     precoMaximo: "",
     ordenacao: "maiorPreco",
-    contador: 0,
+    // contador: 0,
     produtos : [
       {
         id: 1,
         imagemUrl: meteorito1,
         nome: "meteorito azul",
-        preco: 530
+        preco: 530,
+        contador: 1
     },
     {
         id: 2,
         imagemUrl: meteorito2,
         nome: "meteorito rochoso",
-        preco: 80
+        preco: 80,
+        contador: 1
     },
     {
         id: 3,
         imagemUrl: meteorito3,
         nome: "meteorito verde",
-        preco: 850
+        preco: 850,
+        contador: 1
     },
     {
         id: 4,
         imagemUrl: meteorito4,
         nome: "meteorito vermelho",
-        preco: 610
+        preco: 610,
+        contador: 1
     },
     {
         id: 5,
         imagemUrl: meteorito5,
         nome: "meteorito rosa",
-        preco: 790
+        preco: 790,
+        contador: 1
     },
     {
         id: 6,
         imagemUrl: meteorito6,
         nome: "meteorito laranja",
-        preco: 420
+        preco: 420,
+        contador: 1
     }
   ]
 
@@ -84,13 +90,15 @@ class App extends React.Component {
   ordenaProdutos = (event) => {
     this.setState({ ordenacao: event.target.value })
   }
-
-  adicionarAoCarrinho = (event) => {
-    this.setState({ contador: event.target.value })
-    console.log(event)
-}
+  
+  adicionarAoCarrinho = (produto) => {
+    // const novoContador= this.state.produtos[1].contador +1
+    // this.setState({produtos.contador: novoContador })
+    console.log(produto)
+  }
 
   render() {
+    
     return (
       <AppGrid>
 
@@ -116,7 +124,8 @@ class App extends React.Component {
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
           produtos={this.state.produtos}
-          adicionarAoCarrinho={this.adicionarAoCarrinho}
+          // adicionarAoCarrinho={this.adicionarAoCarrinho}
+          onClick={this.adicionarAoCarrinho}
         />
         <Carrinho produtos={this.state.produtos}/>
         
