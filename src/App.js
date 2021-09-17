@@ -4,38 +4,38 @@ import './App.css';
 import Carrinho from './components/Carrinho/carrinho-Itens';
 import Filtro from './components/Filtro/filtro';
 import Main from './components/Home/main';
-
-
-
+import ProdutosCard from './components/Home/ProdutosCard'
 
 class App extends React.Component {
+
   state = {
     busca: "",
     precoMinimo: "",
     precoMaximo: "",
     ordenacao: "maiorPreco",
-    produtos: [
-      {
-          nome: "meteorito azul",
-          preco: 530
-      },
-      {
-          nome: "meteorito rochoso",
-          preco: 80
-      },
-      {
-          nome: "meteorito roxo",
-          preco: 850
-      },
-      {
-          nome: "meteorito vermelho",
-          preco: 610
-      },
-      {
-          nome: "meteorito rosa",
-          preco: 790
-      }
-    ]
+    produtos : [
+    {
+        nome: "meteorito azul",
+        preco: 530
+    },
+    {
+        nome: "meteorito rochoso",
+        preco: 80
+    },
+    {
+        nome: "meteorito roxo",
+        preco: 850
+    },
+    {
+        nome: "meteorito vermelho",
+        preco: 610
+    },
+    {
+        nome: "meteorito rosa",
+        preco: 790
+    }
+  ]
+
   }
 
   atualizaBusca = (event) => {
@@ -58,8 +58,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
-
 
         <Filtro
           busca={this.state.busca}
@@ -84,21 +82,13 @@ class App extends React.Component {
           ordenaProdutos={this.ordenaProdutos}
           produtos={this.state.produtos}
         />
-        <Carrinho />
+        <Carrinho produtos={this.state.produtos}/>
         
       </div>
 
     );
   }
+
 }  
+}
 export default App;
-
-
-
-
-
-
-
-
-
-
