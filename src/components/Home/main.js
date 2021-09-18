@@ -3,11 +3,11 @@ import styled from 'styled-components';
 // import ProdutosCard from './ProdutosCard';
 
 const MainContainer = styled.section`
-    border: 1px solid black; 
+    box-shadow: 1px 5px 5px 1px rgb(175, 172, 172);
     margin: 4px;
     display: grid;
-    grid-row: 1fr 1fr;
-    grid-template-columns: 2fr 3fr 1fr;
+    /* grid-row: 1fr 1fr; */
+    grid-template-columns: 1fr 1fr 1fr;
 `
 
 const CardImag = styled.img`
@@ -31,6 +31,7 @@ align-items: center;
 flex-direction: column;
 margin-bottom: 8px;
 padding: 5px;
+/* border: 1px solid black; */
 `
 
 function ProdutosCard({produto, onClick}) {
@@ -40,7 +41,7 @@ function ProdutosCard({produto, onClick}) {
             <CardImag src={produto.imagemUrl} alt={produto.nome}/>
             <div>
                 <h4>{produto.nome}</h4>
-                <p>{produto.preco}</p>
+                <p>R${produto.preco},00</p>
             </div>
             <button >Adicionar ao carrinho</button>
         </ProdutoGeral>
@@ -52,11 +53,7 @@ function Main(props) {
     
     return (
         <MainContainer >
-            {/* <div>
-                <h3>Quantidade de produtos: {listaDeProdutos.length} </h3>
-            </div> */}
-            
-            {/* <p>Produtos</p> */}
+           
 
             {props.produtos
 

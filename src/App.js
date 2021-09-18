@@ -11,14 +11,36 @@ import meteorito3 from './components/imagens-meteoritos/meteorito-verde.png'
 import meteorito4 from './components/imagens-meteoritos/meteorito-vermelho.png'
 import meteorito5 from './components/imagens-meteoritos/meteorito-rosa.png'
 import meteorito6 from './components/imagens-meteoritos/meteorito-amarelo.png'
+import backgroud from './imagens/background.png'
+import logo from './imagens/logo.png'
 
 
 const AppGrid = styled.div`
-display: grid;
-grid-template-columns: 1fr 3fr 1fr;
-
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  position: absolute;
+  top:10px;
+  left: 8px;
+  
 
 `
+
+const Background = styled.img`
+  width: 100%;
+  height: 100%;
+`
+
+const Footer = styled.footer`
+    grid-column: 1/4;
+    /* width: 100vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+`
+
 
 class App extends React.Component {
 
@@ -29,6 +51,7 @@ class App extends React.Component {
     ordenacao: "maiorPreco",
     // contador: 0,
     produtos : [
+
       {
         id: 1,
         imagemUrl: meteorito1,
@@ -73,6 +96,7 @@ class App extends React.Component {
     }
   ]
 
+
   }
 
   atualizaBusca = (event) => {
@@ -90,17 +114,22 @@ class App extends React.Component {
   ordenaProdutos = (event) => {
     this.setState({ ordenacao: event.target.value })
   }
+
   
   adicionarAoCarrinho = (produto) => {
     // const novoContador= this.state.produtos[1].contador +1
     // this.setState({produtos.contador: novoContador })
     console.log(produto)
+
   }
 
   render() {
     
     return (
-      <AppGrid>
+
+      <div className="page-container">
+        <Background src={backgroud} className="background" />
+        <AppGrid>
 
         <Filtro
           busca={this.state.busca}
@@ -128,12 +157,22 @@ class App extends React.Component {
           onClick={this.adicionarAoCarrinho}
         />
         <Carrinho produtos={this.state.produtos}/>
-        
+        <Footer className="footer">
+            <p>Conheça nossas redes sociais</p>
+            <div>
+              <img src="https://cdn-icons-png.flaticon.com/512/185/185985.png" alt="" />
+              <img src="https://cdn-icons-png.flaticon.com/512/185/185961.png" alt="" />
+              <img src="https://img-premium.flaticon.com/png/512/1377/premium/1377223.png?token=exp=1631977730~hmac=528eca751a912ec1e21a8e29c9c84adb" alt="" />
+            </div>
+          </Footer>
       </AppGrid>
+
+        
+      </div>
 
     );
   }
 
-}  
+}
 
 export default App;

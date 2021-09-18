@@ -1,16 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import logo from '../../imagens/logo.png'
 
 
 const FiltroContainer = styled.section`
-    border: 1px solid black;
+    box-shadow: 1px 5px 5px 1px rgb(175, 172, 172);
     margin: 8px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 1.8rem;
+    height: 60%;
     
 `
-
+const Input = styled.input`
+    width: 70%;
+    /* border: none; */
+    outline: none;
+    /* border-bottom: 2px solid rgba(0, 0, 0, 0.8 ); */
+    height: 1.2rem;
+`
+const Select = styled.select`
+    width: 70%;
+    height: 1.2rem;
+`
 
 
 
@@ -21,6 +34,9 @@ function Filtro(props) {
     return (
 
 
+
+      <div>
+        <img src={logo} alt="logo da loja" className="logo-img" />
         <FiltroContainer >
 
             <p>Filtro</p>
@@ -63,6 +79,8 @@ function Filtro(props) {
             </select>
 
         </FiltroContainer>
+      </div>
+
 
     );
 }
