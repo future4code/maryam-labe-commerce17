@@ -49,9 +49,13 @@ h2 {
   display: inline-flex;
   margin-right: 10px;
 }
-button {
-  padding-right: 2px;
-  padding-left: 2px;
+
+
+button{
+  padding-right: 3px;
+  padding-left: 3px;
+  height: 25px;
+
 }
 /* CARRINHO ^^-------------------------- */
 

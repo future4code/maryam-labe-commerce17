@@ -33,49 +33,54 @@ function Filtro(props) {
 
     return (
 
-        <div>
-            <img src={logo} alt="logo da loja" className="logo-img" />
-            <FiltroContainer >
 
-                <h2>Filtro</h2>
 
-                <label htmlFor="valorMinimo">Valor Mínimo:</label>
-                <Input
-                    name="valorMinimo"
-                    type="number"
-                    value={props.precoMinimo}
-                    onChange={props.atualizaPrecoMinimo}
-                />
+      <div>
+        <img src={logo} alt="logo da loja" className="logo-img" />
+        <FiltroContainer >
 
-                <label htmlFor="valorMaximo">Valor Máximo:</label>
-                <Input
-                    name="valorMaximo"
-                    type="number"
-                    value={props.precoMaximo}
-                    onChange={props.atualizaPrecoMaximo}
-                />
+            <p>Filtro</p>
 
-                <label htmlFor="nome">Busca por nome:</label>
-                <Input
-                    name="nome"
-                    value={props.busca}
-                    onChange={props.atualizaBusca}
-                />
+            <label htmlFor="valorMinimo">Valor Mínimo:</label>
+            <input
+                type="number"
+                name="valorMinimo"
 
-                <label htmlFor="ordem">Ordenar por:</label>
-                <Select
-                    name="ordem"
-                    value={props.ordenacao}
-                    onChange={props.ordenaProdutos}
+                value={props.precoMinimo}
+                onChange={props.atualizaPrecoMinimo}
+            />
+            
+            <label htmlFor="valorMaximo">Valor Máximo:</label>
+            <input
+                type="number"
+                name="valorMaximo"
 
-                >
-                    <option value="maiorPreco">Maior preço</option>
-                    <option value="menorPreco">Menor preço</option>
-                    <option value="nome">Ordem Alfabética</option>
-                </Select>
+                value={props.precoMaximo}
+                onChange={props.atualizaPrecoMaximo}
+            />
+            
+            <label htmlFor="nome">Busca por nome:</label>
+            <input
+                name="nome"
+                value={props.busca}
+                onChange={props.atualizaBusca}
+            />
 
-            </FiltroContainer>
-        </div>
+            <label htmlFor="ordem">Ordenar por:</label>
+            <select
+                name="ordem"
+                value={props.ordenacao}
+                onChange={props.ordenaProdutos}
+
+            >
+                <option value="maiorPreco">Maior preço</option>
+                <option value="menorPreco">Menor preço</option>
+                <option value="nome">Ordem Alfabética</option>
+            </select>
+
+        </FiltroContainer>
+      </div>
+
 
     );
 }

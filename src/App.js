@@ -49,45 +49,53 @@ class App extends React.Component {
     precoMinimo: "",
     precoMaximo: "",
     ordenacao: "maiorPreco",
-    contador: 0,
-    produtos: [
+    // contador: 0,
+    produtos : [
+
       {
         id: 1,
         imagemUrl: meteorito1,
         nome: "meteorito azul",
-        preco: 530
-      },
-      {
+        preco: 530,
+        contador: 1
+    },
+    {
         id: 2,
         imagemUrl: meteorito2,
         nome: "meteorito rochoso",
-        preco: 80
-      },
-      {
+        preco: 80,
+        contador: 1
+    },
+    {
         id: 3,
         imagemUrl: meteorito3,
         nome: "meteorito verde",
-        preco: 850
-      },
-      {
+        preco: 850,
+        contador: 1
+    },
+    {
         id: 4,
         imagemUrl: meteorito4,
         nome: "meteorito vermelho",
-        preco: 610
-      },
-      {
+        preco: 610,
+        contador: 1
+    },
+    {
         id: 5,
         imagemUrl: meteorito5,
         nome: "meteorito rosa",
-        preco: 790
-      },
-      {
+        preco: 790,
+        contador: 1
+    },
+    {
         id: 6,
         imagemUrl: meteorito6,
         nome: "meteorito laranja",
-        preco: 420
-      }
-    ]
+        preco: 420,
+        contador: 1
+    }
+  ]
+
 
   }
 
@@ -107,45 +115,49 @@ class App extends React.Component {
     this.setState({ ordenacao: event.target.value })
   }
 
-  adicionarAoCarrinho = (event) => {
-    this.setState({ contador: event.target.value })
-    console.log(event)
+  
+  adicionarAoCarrinho = (produto) => {
+    // const novoContador= this.state.produtos[1].contador +1
+    // this.setState({produtos.contador: novoContador })
+    console.log(produto)
+
   }
 
   render() {
+    
     return (
+
       <div className="page-container">
         <Background src={backgroud} className="background" />
-
-
         <AppGrid>
 
-          <Filtro
-            busca={this.state.busca}
-            atualizaBusca={this.atualizaBusca}
-            precoMinimo={this.state.precoMinimo}
-            atualizaPrecoMinimo={this.atualizaPrecoMinimo}
-            precoMaximo={this.state.precoMaximo}
-            atualizaPrecoMaximo={this.atualizaPrecoMaximo}
-            ordenacao={this.state.ordenacao}
-            ordenaProdutos={this.ordenaProdutos}
-            produtos={this.state.produtos}
-          />
+        <Filtro
+          busca={this.state.busca}
+          atualizaBusca={this.atualizaBusca}
+          precoMinimo={this.state.precoMinimo}
+          atualizaPrecoMinimo={this.atualizaPrecoMinimo}
+          precoMaximo={this.state.precoMaximo}
+          atualizaPrecoMaximo={this.atualizaPrecoMaximo}
+          ordenacao={this.state.ordenacao}
+          ordenaProdutos={this.ordenaProdutos}
+          produtos={this.state.produtos}
+        />
 
-          <Main
-            busca={this.state.busca}
-            atualizaBusca={this.atualizaBusca}
-            precoMinimo={this.state.precoMinimo}
-            atualizaPrecoMinimo={this.atualizaPrecoMinimo}
-            precoMaximo={this.state.precoMaximo}
-            atualizaPrecoMaximo={this.atualizaPrecoMaximo}
-            ordenacao={this.state.ordenacao}
-            ordenaProdutos={this.ordenaProdutos}
-            produtos={this.state.produtos}
-            adicionarAoCarrinho={this.adicionarAoCarrinho}
-          />
-          <Carrinho produtos={this.state.produtos} />
-          <Footer className="footer">
+        <Main
+          busca={this.state.busca}
+          atualizaBusca={this.atualizaBusca}
+          precoMinimo={this.state.precoMinimo}
+          atualizaPrecoMinimo={this.atualizaPrecoMinimo}
+          precoMaximo={this.state.precoMaximo}
+          atualizaPrecoMaximo={this.atualizaPrecoMaximo}
+          ordenacao={this.state.ordenacao}
+          ordenaProdutos={this.ordenaProdutos}
+          produtos={this.state.produtos}
+          // adicionarAoCarrinho={this.adicionarAoCarrinho}
+          onClick={this.adicionarAoCarrinho}
+        />
+        <Carrinho produtos={this.state.produtos}/>
+        <Footer className="footer">
             <p>Conheça nossas redes sociais</p>
             <div>
               <img src="https://cdn-icons-png.flaticon.com/512/185/185985.png" alt="" />
@@ -153,8 +165,11 @@ class App extends React.Component {
               <img src="https://img-premium.flaticon.com/png/512/1377/premium/1377223.png?token=exp=1631977730~hmac=528eca751a912ec1e21a8e29c9c84adb" alt="" />
             </div>
           </Footer>
-        </AppGrid>
+      </AppGrid>
+
+        
       </div>
+
     );
   }
 
