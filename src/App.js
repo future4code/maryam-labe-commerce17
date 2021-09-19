@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import './App.css';
-import Carrinho from './components/Carrinho/carrinho-Itens';
+import Carrinho from './components/Carrinho/carrinho-itens';
 import Filtro from './components/Filtro/filtro';
 import Main from './components/Home/main';
 // import ProdutosCard from './components/Home/ProdutosCard'
@@ -12,7 +12,7 @@ import meteorito4 from './components/imagens-meteoritos/meteorito-vermelho.png'
 import meteorito5 from './components/imagens-meteoritos/meteorito-rosa.png'
 import meteorito6 from './components/imagens-meteoritos/meteorito-amarelo.png'
 import backgroud from './imagens/background.png'
-import logo from './imagens/logo.png'
+
 
 
 const AppGrid = styled.div`
@@ -53,42 +53,42 @@ class App extends React.Component {
     produtos : [
 
       {
-        id: 0,
+        id: 1,
         imagemUrl: meteorito1,
         nome: "meteorito azul",
         preco: 530,
-        quantidade: 3
-    },
-    {
-        id: 1,
-        imagemUrl: meteorito2,
-        nome: "meteorito rochoso",
-        preco: 80,
-        quantidade: 1
+        quantidade: 0
     },
     {
         id: 2,
-        imagemUrl: meteorito3,
-        nome: "meteorito verde",
-        preco: 850,
-        quantidade: 1
+        imagemUrl: meteorito2,
+        nome: "meteorito rochoso",
+        preco: 80,
+        quantidade: 0
     },
     {
         id: 3,
-        imagemUrl: meteorito4,
-        nome: "meteorito vermelho",
-        preco: 610,
-        quantidade: 5
+        imagemUrl: meteorito3,
+        nome: "meteorito verde",
+        preco: 850,
+        quantidade: 0
     },
     {
         id: 4,
+        imagemUrl: meteorito4,
+        nome: "meteorito vermelho",
+        preco: 610,
+        quantidade: 0
+    },
+    {
+        id: 5,
         imagemUrl: meteorito5,
         nome: "meteorito rosa",
         preco: 790,
         quantidade: 0
     },
     {
-        id: 5,
+        id: 6,
         imagemUrl: meteorito6,
         nome: "meteorito laranja",
         preco: 420,
@@ -124,13 +124,13 @@ class App extends React.Component {
         return false;
       }
     });
-    
+    let novoCarrinho = [];
     if(produtoNoCarrinho.length === 0){
       produto.quantidade = 1;
-      const novoCarrinho = [produto, ...this.state.carrinho];
-      this.setState({carrinho: novoCarrinho});
+      novoCarrinho = [produto, ...this.state.carrinho];
+      
     }else{
-      const novoCarrinho = this.state.carrinho.map((item) => {
+      novoCarrinho = this.state.carrinho.map((item) => {
         if(produto.id === item.id){ 
           return {...item, quantidade: item.quantidade + 1};
         }else{
@@ -138,17 +138,21 @@ class App extends React.Component {
         }
       });
 
-      this.setState({carrinho: novoCarrinho});
+      
     }
+    this.setState({carrinho: novoCarrinho});
     this.adicionarValorTotal(produto.preco)
   }
+
+
   adicionarValorTotal(preco){
     this.setState({valorTotal: this.state.valorTotal + preco})
   }
   
   removerItensdoCarrinho = (produtoParaRemover) => {
+    // let novoCarrinho = [];
     // if(produtoParaRemover.quantidade === 1){
-    //   const novoCarrinho = this.state.carrinho.filter((item) => {
+    //   novoCarrinho = this.state.carrinho.filter((item) => {
     //     if (item.id !== produtoParaRemover.id){
     //       return item;
     //     }else{
@@ -157,22 +161,21 @@ class App extends React.Component {
       
     //   });
     
-    //   this.setState({carrinho: novoCarrinho});
+      
     // } else {
-    //   const novoCarrinho = this.state.carrinho.map((item) => {
+    //   novoCarrinho = this.state.carrinho.map((item) => {
     //     if (produtoParaRemover.id === item.id && item.quantidade > 1){
     //       return { ...item, quantidade: item.quantidade -1};
     //     }else{
     //       return item;
     //     }
     //   });
-    //   this.setState({carrinho: novoCarrinho})
+      
     // }
+    // this.setState({carrinho: novoCarrinho})
+    console.log(produtoParaRemover.quantidade - 1)
   }
-  // clicou() {
-  //   console.log("fui clicado");
-  // this.subtrairValorTotal(produto.preco)
-  // }
+  
 
   subtrairValorTotal(preco){
     this.setState({valorTotal: this.state.valorTotal - preco})
@@ -211,7 +214,7 @@ class App extends React.Component {
           onClick={this.adicionarAoCarrinho}
         />
         <Carrinho 
-          carrinho={this.state.carrinho}
+          produtos={this.state.produtos}
           valorTotal={this.state.valorTotal}
           itensCarrinho={this.state.carrinho}
           onClick={this.removerItensdoCarrinho} 
