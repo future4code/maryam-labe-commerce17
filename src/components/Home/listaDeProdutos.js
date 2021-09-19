@@ -44,4 +44,4 @@ export const listaDeProdutos = [
         nome: "meteorito laranja",
         preco: 420
     }
-  ]
+]

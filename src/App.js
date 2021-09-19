@@ -160,9 +160,9 @@ class App extends React.Component {
         <Footer className="footer">
             <p>Conheça nossas redes sociais</p>
             <div>
-              <img src="https://cdn-icons-png.flaticon.com/512/185/185985.png" alt="" />
-              <img src="https://cdn-icons-png.flaticon.com/512/185/185961.png" alt="" />
-              <img src="https://img-premium.flaticon.com/png/512/1377/premium/1377223.png?token=exp=1631977730~hmac=528eca751a912ec1e21a8e29c9c84adb" alt="" />
+              <a href="https://www.instagram.com/" target="none"><img src="https://cdn-icons-png.flaticon.com/512/185/185985.png" alt="instagram" /> </a>
+              <a href="https://www.twitter.com/" target="none"><img src="https://cdn-icons-png.flaticon.com/512/185/185961.png" alt="twitter" /></a>
+              <a href="https://www.facebook.com/" target="none"><img src="https://img-premium.flaticon.com/png/512/1377/premium/1377223.png?token=exp=1631977730~hmac=528eca751a912ec1e21a8e29c9c84adb" alt="facebook" /></a>
             </div>
           </Footer>
       </AppGrid>
