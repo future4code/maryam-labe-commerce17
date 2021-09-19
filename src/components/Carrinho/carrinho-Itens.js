@@ -6,16 +6,23 @@ export default function Carrinho (props) {
 	return (<div>
 		<header>
         <h2>Carrinho:</h2>
-		{props.produtos.map((produto) => {
+		{props.carrinho
+		.filter((produto) => {
+			return produto.quantidade > 0
+		})
+		.map((produto) => {
             return (
 				<div className="containerCarrinho">
 				<p>{produto.nome} R${produto.preco},00</p>
-				{produto.contador }x
-				<button>Remover</button>
+				{produto.quantidade }x
+				
+				<button onClick={props.onClick(produto)}>Remover</button>
 				</div>
             )}
 		)} 
-        <ValorTotal></ValorTotal>
+        <ValorTotal
+		valor={props.valorTotal}
+		/>
     </header>
 	</div>)
 }

@@ -8,11 +8,12 @@ const MainContainer = styled.section`
     display: grid;
     /* grid-row: 1fr 1fr; */
     grid-template-columns: 1fr 1fr 1fr;
+    height: 100%;
 `
 
 const CardImag = styled.img`
-width: 200px;
-height: auto;
+/* width: 200px; */
+height: 180px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
@@ -43,7 +44,7 @@ function ProdutosCard({produto, onClick}) {
                 <h4>{produto.nome}</h4>
                 <p>R${produto.preco},00</p>
             </div>
-            <button >Adicionar ao carrinho</button>
+            <button onClick={onClick}>Adicionar ao carrinho</button>
         </ProdutoGeral>
     )
  }

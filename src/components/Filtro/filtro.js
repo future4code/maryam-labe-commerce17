@@ -4,21 +4,22 @@ import logo from '../../imagens/logo.png'
 
 
 const FiltroContainer = styled.section`
+    /* border: 1px solid black; */
     box-shadow: 1px 5px 5px 1px rgb(175, 172, 172);
-    margin: 8px;
+    /* margin: 8px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1.8rem;
-    height: 60%;
+    padding-left: 1.8rem;
+    width: 90%;
+    height: 100%;
     
 `
 const Input = styled.input`
     width: 70%;
-    /* border: none; */
     outline: none;
-    /* border-bottom: 2px solid rgba(0, 0, 0, 0.8 ); */
     height: 1.2rem;
+    margin-bottom: 5px;
 `
 const Select = styled.select`
     width: 70%;
@@ -35,14 +36,14 @@ function Filtro(props) {
 
 
 
-      <div>
+      <div className="filtro-section">
         <img src={logo} alt="logo da loja" className="logo-img" />
         <FiltroContainer >
 
-            <p>Filtro</p>
+            <h2>Filtro:</h2>
 
             <label htmlFor="valorMinimo">Valor Mínimo:</label>
-            <input
+            <Input
                 type="number"
                 name="valorMinimo"
 
@@ -51,7 +52,7 @@ function Filtro(props) {
             />
             
             <label htmlFor="valorMaximo">Valor Máximo:</label>
-            <input
+            <Input
                 type="number"
                 name="valorMaximo"
 
@@ -60,14 +61,14 @@ function Filtro(props) {
             />
             
             <label htmlFor="nome">Busca por nome:</label>
-            <input
+            <Input
                 name="nome"
                 value={props.busca}
                 onChange={props.atualizaBusca}
             />
 
             <label htmlFor="ordem">Ordenar por:</label>
-            <select
+            <Select
                 name="ordem"
                 value={props.ordenacao}
                 onChange={props.ordenaProdutos}
@@ -76,7 +77,7 @@ function Filtro(props) {
                 <option value="maiorPreco">Maior preço</option>
                 <option value="menorPreco">Menor preço</option>
                 <option value="nome">Ordem Alfabética</option>
-            </select>
+            </Select>
 
         </FiltroContainer>
       </div>

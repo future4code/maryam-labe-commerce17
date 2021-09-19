@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import './App.css';
 import Carrinho from './components/Carrinho/carrinho-Itens';
 import Filtro from './components/Filtro/filtro';
@@ -32,7 +32,6 @@ const Background = styled.img`
 
 const Footer = styled.footer`
     grid-column: 1/4;
-    /* width: 100vw; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,50 +48,51 @@ class App extends React.Component {
     precoMinimo: "",
     precoMaximo: "",
     ordenacao: "maiorPreco",
-    // contador: 0,
+    valorTotal: 0,
+    carrinho: [],
     produtos : [
 
       {
-        id: 1,
+        id: 0,
         imagemUrl: meteorito1,
         nome: "meteorito azul",
         preco: 530,
-        contador: 1
+        quantidade: 3
     },
     {
-        id: 2,
+        id: 1,
         imagemUrl: meteorito2,
         nome: "meteorito rochoso",
         preco: 80,
-        contador: 1
+        quantidade: 1
     },
     {
-        id: 3,
+        id: 2,
         imagemUrl: meteorito3,
         nome: "meteorito verde",
         preco: 850,
-        contador: 1
+        quantidade: 1
     },
     {
-        id: 4,
+        id: 3,
         imagemUrl: meteorito4,
         nome: "meteorito vermelho",
         preco: 610,
-        contador: 1
+        quantidade: 5
     },
     {
-        id: 5,
+        id: 4,
         imagemUrl: meteorito5,
         nome: "meteorito rosa",
         preco: 790,
-        contador: 1
+        quantidade: 0
     },
     {
-        id: 6,
+        id: 5,
         imagemUrl: meteorito6,
         nome: "meteorito laranja",
         preco: 420,
-        contador: 1
+        quantidade: 0
     }
   ]
 
@@ -117,12 +117,66 @@ class App extends React.Component {
 
   
   adicionarAoCarrinho = (produto) => {
-    // const novoContador= this.state.produtos[1].contador +1
-    // this.setState({produtos.contador: novoContador })
-    console.log(produto)
+    const produtoNoCarrinho = this.state.carrinho.filter((item) => {
+      if(produto.id === item.id){
+        return item;
+      }else {
+        return false;
+      }
+    });
+    
+    if(produtoNoCarrinho.length === 0){
+      produto.quantidade = 1;
+      const novoCarrinho = [produto, ...this.state.carrinho];
+      this.setState({carrinho: novoCarrinho});
+    }else{
+      const novoCarrinho = this.state.carrinho.map((item) => {
+        if(produto.id === item.id){ 
+          return {...item, quantidade: item.quantidade + 1};
+        }else{
+          return item;
+        }
+      });
 
+      this.setState({carrinho: novoCarrinho});
+    }
+    this.adicionarValorTotal(produto.preco)
   }
+  adicionarValorTotal(preco){
+    this.setState({valorTotal: this.state.valorTotal + preco})
+  }
+  
+  removerItensdoCarrinho = (produtoParaRemover) => {
+    // if(produtoParaRemover.quantidade === 1){
+    //   const novoCarrinho = this.state.carrinho.filter((item) => {
+    //     if (item.id !== produtoParaRemover.id){
+    //       return item;
+    //     }else{
+    //       return false;
+    //     }
+      
+    //   });
+    
+    //   this.setState({carrinho: novoCarrinho});
+    // } else {
+    //   const novoCarrinho = this.state.carrinho.map((item) => {
+    //     if (produtoParaRemover.id === item.id && item.quantidade > 1){
+    //       return { ...item, quantidade: item.quantidade -1};
+    //     }else{
+    //       return item;
+    //     }
+    //   });
+    //   this.setState({carrinho: novoCarrinho})
+    // }
+  }
+  // clicou() {
+  //   console.log("fui clicado");
+  // this.subtrairValorTotal(produto.preco)
+  // }
 
+  subtrairValorTotal(preco){
+    this.setState({valorTotal: this.state.valorTotal - preco})
+  }
   render() {
     
     return (
@@ -156,17 +210,23 @@ class App extends React.Component {
           // adicionarAoCarrinho={this.adicionarAoCarrinho}
           onClick={this.adicionarAoCarrinho}
         />
-        <Carrinho produtos={this.state.produtos}/>
-        <Footer className="footer">
+        <Carrinho 
+          carrinho={this.state.carrinho}
+          valorTotal={this.state.valorTotal}
+          itensCarrinho={this.state.carrinho}
+          onClick={this.removerItensdoCarrinho} 
+          // onClick={this.state.clicou} 
+        />
+        
+      </AppGrid>
+      <Footer className="footer">
             <p>Conheça nossas redes sociais</p>
             <div>
-              <a href="https://www.instagram.com/" target="none"><img src="https://cdn-icons-png.flaticon.com/512/185/185985.png" alt="instagram" /> </a>
+              <a href="https://www.instagram.com/" target="none"><img src="https://cdn-icons-png.flaticon.com/512/185/185985.png" alt="instagram" /></a>
               <a href="https://www.twitter.com/" target="none"><img src="https://cdn-icons-png.flaticon.com/512/185/185961.png" alt="twitter" /></a>
               <a href="https://www.facebook.com/" target="none"><img src="https://img-premium.flaticon.com/png/512/1377/premium/1377223.png?token=exp=1631977730~hmac=528eca751a912ec1e21a8e29c9c84adb" alt="facebook" /></a>
             </div>
           </Footer>
-      </AppGrid>
-
         
       </div>
 
