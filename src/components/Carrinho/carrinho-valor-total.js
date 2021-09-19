@@ -3,11 +3,11 @@ import '../../src/../App.css';
 import '../../App'
 import Carrinho from './carrinho-Itens';
 
-export default function ValorTotal() {
-    const valor=200
+export default function ValorTotal(props) {
+    
 	return <div>
 		<span>
-            <p>Valor total:R${valor},00</p>
+            <p>Valor total:R${props.valor},00</p>
         </span>
 	</div>
 }
