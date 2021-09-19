@@ -25,7 +25,9 @@ const Select = styled.select`
     width: 70%;
     height: 1.2rem;
 `
-
+const Button = styled.button`
+    width: 70%;
+`
 
 
 
@@ -78,7 +80,7 @@ function Filtro(props) {
                 <option value="menorPreco">Menor preço</option>
                 <option value="nome">Ordem Alfabética</option>
             </Select>
-
+            <Button onClick={props.limpaFiltro}>Limpar</Button>
         </FiltroContainer>
       </div>
 

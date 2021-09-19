@@ -115,6 +115,11 @@ class App extends React.Component {
     this.setState({ ordenacao: event.target.value })
   }
 
+  limpaFiltro = () => {
+    this.setState({busca: ""});
+    this.setState({precoMinimo: ""});
+    this.setState({precoMaximo: ""});
+  }
   
   adicionarAoCarrinho = (produto) => {
     const produtoNoCarrinho = this.state.carrinho.filter((item) => {
@@ -173,7 +178,7 @@ class App extends React.Component {
       
     // }
     // this.setState({carrinho: novoCarrinho})
-    console.log(produtoParaRemover.quantidade - 1)
+    console.log(produtoParaRemover)
   }
   
 
@@ -198,6 +203,7 @@ class App extends React.Component {
           ordenacao={this.state.ordenacao}
           ordenaProdutos={this.ordenaProdutos}
           produtos={this.state.produtos}
+          limpaFiltro={this.limpaFiltro}
         />
 
         <Main
@@ -217,7 +223,7 @@ class App extends React.Component {
           produtos={this.state.produtos}
           valorTotal={this.state.valorTotal}
           itensCarrinho={this.state.carrinho}
-          onClick={this.removerItensdoCarrinho} 
+          onClickCarrinho={this.removerItensdoCarrinho} 
           // onClick={this.state.clicou} 
         />
         

@@ -23,7 +23,7 @@ export default function Carrinho (props){
 					<p>{item.nome} R${item.preco},00</p>
 					{item.quantidade }x
 					
-					<button onClick={props.onClick(item)}>Remover</button>
+					<button onClick={props.onClickCarrinho(item)}>Remover</button>
 					</div>
 				)}
 			)} 
