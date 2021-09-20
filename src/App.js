@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import './App.css';
-import Carrinho from './components/Carrinho/carrinho-itens';
+import Carrinho from './components/Carrinho/carrinho-itens.js';
 import Filtro from './components/Filtro/filtro';
 import Main from './components/Home/main';
 // import ProdutosCard from './components/Home/ProdutosCard'
@@ -36,7 +36,7 @@ const Footer = styled.footer`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 0.3rem;
+    margin-top: 0.9rem;
     margin-bottom: 0.5rem;
 `
 
@@ -50,7 +50,7 @@ class App extends React.Component {
     ordenacao: "maiorPreco",
     valorTotal: 0,
     carrinho: [],
-    produtos : [
+    produtos: [
 
       {
         id: 1,
@@ -58,43 +58,43 @@ class App extends React.Component {
         nome: "meteorito azul",
         preco: 530,
         quantidade: 0
-    },
-    {
+      },
+      {
         id: 2,
         imagemUrl: meteorito2,
         nome: "meteorito rochoso",
         preco: 80,
         quantidade: 0
-    },
-    {
+      },
+      {
         id: 3,
         imagemUrl: meteorito3,
         nome: "meteorito verde",
         preco: 850,
         quantidade: 0
-    },
-    {
+      },
+      {
         id: 4,
         imagemUrl: meteorito4,
         nome: "meteorito vermelho",
         preco: 610,
         quantidade: 0
-    },
-    {
+      },
+      {
         id: 5,
         imagemUrl: meteorito5,
         nome: "meteorito rosa",
         preco: 790,
         quantidade: 0
-    },
-    {
+      },
+      {
         id: 6,
         imagemUrl: meteorito6,
         nome: "meteorito laranja",
         preco: 420,
         quantidade: 0
-    }
-  ]
+      }
+    ]
 
 
   }
@@ -116,119 +116,117 @@ class App extends React.Component {
   }
 
   limpaFiltro = () => {
-    this.setState({busca: ""});
-    this.setState({precoMinimo: ""});
-    this.setState({precoMaximo: ""});
+    this.setState({ busca: "" });
+    this.setState({ precoMinimo: "" });
+    this.setState({ precoMaximo: "" });
   }
-  
+
   adicionarAoCarrinho = (produto) => {
     const produtoNoCarrinho = this.state.carrinho.filter((item) => {
-      if(produto.id === item.id){
+      if (produto.id === item.id) {
         return item;
-      }else {
+      } else {
         return false;
       }
     });
     let novoCarrinho = [];
-    if(produtoNoCarrinho.length === 0){
+    if (produtoNoCarrinho.length === 0) {
       produto.quantidade = 1;
       novoCarrinho = [produto, ...this.state.carrinho];
-      
-    }else{
+
+    } else {
       novoCarrinho = this.state.carrinho.map((item) => {
-        if(produto.id === item.id){ 
-          return {...item, quantidade: item.quantidade + 1};
+        if (produto.id === item.id) {
+          return { ...item, quantidade: item.quantidade + 1 };
+        } else {
+          return item;
+        }
+      });
+
+
+    }
+    this.setState({ carrinho: novoCarrinho });
+    this.adicionarValorTotal(produto.preco)
+  }
+
+
+  adicionarValorTotal(preco) {
+    this.setState({ valorTotal: this.state.valorTotal + preco })
+  }
+
+  removerItensdoCarrinho = (produtoParaRemover) => {
+    let carrinhoAlterado = [];
+    if(produtoParaRemover.quantidade === 1){
+      carrinhoAlterado = this.state.carrinho.filter((item) => {
+        if (item.id !== produtoParaRemover.id){
+          return item;
+        }else{
+          return false;
+        }
+
+      });
+
+
+    } else {
+      carrinhoAlterado = this.state.carrinho.map((item) => {
+        if (produtoParaRemover.id === item.id && item.quantidade > 1){
+          return { ...item, quantidade: item.quantidade - 1};
         }else{
           return item;
         }
       });
 
-      
     }
-    this.setState({carrinho: novoCarrinho});
-    this.adicionarValorTotal(produto.preco)
+    this.setState({carrinho: carrinhoAlterado})
+    this.subtrairValorTotal(produtoParaRemover.preco)
   }
 
 
-  adicionarValorTotal(preco){
-    this.setState({valorTotal: this.state.valorTotal + preco})
-  }
-  
-  removerItensdoCarrinho = (produtoParaRemover) => {
-    // let novoCarrinho = [];
-    // if(produtoParaRemover.quantidade === 1){
-    //   novoCarrinho = this.state.carrinho.filter((item) => {
-    //     if (item.id !== produtoParaRemover.id){
-    //       return item;
-    //     }else{
-    //       return false;
-    //     }
-      
-    //   });
-    
-      
-    // } else {
-    //   novoCarrinho = this.state.carrinho.map((item) => {
-    //     if (produtoParaRemover.id === item.id && item.quantidade > 1){
-    //       return { ...item, quantidade: item.quantidade -1};
-    //     }else{
-    //       return item;
-    //     }
-    //   });
-      
-    // }
-    // this.setState({carrinho: novoCarrinho})
-    console.log(produtoParaRemover)
-  }
-  
-
-  subtrairValorTotal(preco){
-    this.setState({valorTotal: this.state.valorTotal - preco})
+  subtrairValorTotal(preco) {
+    this.setState({ valorTotal: this.state.valorTotal - preco })
   }
   render() {
-    
+
     return (
 
       <div className="page-container">
         <Background src={backgroud} className="background" />
         <AppGrid>
 
-        <Filtro
-          busca={this.state.busca}
-          atualizaBusca={this.atualizaBusca}
-          precoMinimo={this.state.precoMinimo}
-          atualizaPrecoMinimo={this.atualizaPrecoMinimo}
-          precoMaximo={this.state.precoMaximo}
-          atualizaPrecoMaximo={this.atualizaPrecoMaximo}
-          ordenacao={this.state.ordenacao}
-          ordenaProdutos={this.ordenaProdutos}
-          produtos={this.state.produtos}
-          limpaFiltro={this.limpaFiltro}
-        />
+          <Filtro
+            busca={this.state.busca}
+            atualizaBusca={this.atualizaBusca}
+            precoMinimo={this.state.precoMinimo}
+            atualizaPrecoMinimo={this.atualizaPrecoMinimo}
+            precoMaximo={this.state.precoMaximo}
+            atualizaPrecoMaximo={this.atualizaPrecoMaximo}
+            ordenacao={this.state.ordenacao}
+            ordenaProdutos={this.ordenaProdutos}
+            produtos={this.state.produtos}
+            limpaFiltro={this.limpaFiltro}
+          />
 
-        <Main
-          busca={this.state.busca}
-          atualizaBusca={this.atualizaBusca}
-          precoMinimo={this.state.precoMinimo}
-          atualizaPrecoMinimo={this.atualizaPrecoMinimo}
-          precoMaximo={this.state.precoMaximo}
-          atualizaPrecoMaximo={this.atualizaPrecoMaximo}
-          ordenacao={this.state.ordenacao}
-          ordenaProdutos={this.ordenaProdutos}
-          produtos={this.state.produtos}
-          // adicionarAoCarrinho={this.adicionarAoCarrinho}
-          onClick={this.adicionarAoCarrinho}
-        />
-        <Carrinho 
-          produtos={this.state.produtos}
-          valorTotal={this.state.valorTotal}
-          itensCarrinho={this.state.carrinho}
-          onClickCarrinho={this.removerItensdoCarrinho} 
+          <Main
+            busca={this.state.busca}
+            atualizaBusca={this.atualizaBusca}
+            precoMinimo={this.state.precoMinimo}
+            atualizaPrecoMinimo={this.atualizaPrecoMinimo}
+            precoMaximo={this.state.precoMaximo}
+            atualizaPrecoMaximo={this.atualizaPrecoMaximo}
+            ordenacao={this.state.ordenacao}
+            ordenaProdutos={this.ordenaProdutos}
+            produtos={this.state.produtos}
+            onClick={this.adicionarAoCarrinho}
+          />
+          <Carrinho
+            produtos={this.state.produtos}
+            valorTotal={this.state.valorTotal}
+            itensCarrinho={this.state.carrinho}
+            onClick={this.removerItensdoCarrinho}
           // onClick={this.state.clicou} 
-        />
-        
-      </AppGrid>
-      <Footer className="footer">
+          />
+
+          <Footer className="footer">
             <p>Conheça nossas redes sociais</p>
             <div>
               <a href="https://www.instagram.com/" target="none"><img src="https://cdn-icons-png.flaticon.com/512/185/185985.png" alt="instagram" /></a>
@@ -236,7 +234,10 @@ class App extends React.Component {
               <a href="https://www.facebook.com/" target="none"><img src="https://img-premium.flaticon.com/png/512/1377/premium/1377223.png?token=exp=1631977730~hmac=528eca751a912ec1e21a8e29c9c84adb" alt="facebook" /></a>
             </div>
           </Footer>
-        
+
+        </AppGrid>
+
+
       </div>
 
     );

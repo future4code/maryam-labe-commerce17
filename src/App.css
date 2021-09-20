@@ -22,7 +22,7 @@
 /* PÁGINA vv-------------------------- */
 .page-container {
   position: relative;
-  height: 105vh;
+  height: 100vh;
   
 }
 ::-webkit-scrollbar{
