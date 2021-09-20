@@ -11,7 +11,11 @@ Autoras: Laura Laurena, Mariana Souza e Stephanie Flávio.
 - Soma do valor total atualiza quando mais itens são adicionados ao projeto
 
 ### O que não funciona
-- Botão Remover do carrinho
+- Salvar dados do carrinho em Local Storage
 
 ### Link Surge 
 https://unused-home.surge.sh/
+
+### Imagens do Site
+![image](https://user-images.githubusercontent.com/23243161/133992951-75adbeca-8358-4a2d-ac2d-58990f45a12e.png)
+![image](https://user-images.githubusercontent.com/23243161/133992981-f52f7c6c-d13d-4f58-a972-c1377ce2180a.png)
