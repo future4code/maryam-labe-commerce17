@@ -80,7 +80,7 @@ function Filtro(props) {
                 <option value="menorPreco">Menor preço</option>
                 <option value="nome">Ordem Alfabética</option>
             </Select>
-            <Button onClick={props.limpaFiltro}>Limpar</Button>
+            <Button onClick={props.limpaFiltro}>Limpar Filtros</Button>
         </FiltroContainer>
       </div>
 

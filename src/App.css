@@ -46,7 +46,7 @@
 
 
 /* CARRINHO vv-------------------------- */
-header {
+.carrinho-section {
   display: flex;
   flex-direction: column;
   align-items: center;
