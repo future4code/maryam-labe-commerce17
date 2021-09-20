@@ -185,6 +185,16 @@ class App extends React.Component {
   subtrairValorTotal(preco) {
     this.setState({ valorTotal: this.state.valorTotal - preco })
   }
+
+  limpaCarrinho = () => {
+    const carrinhoVazio = this.state.carrinho.map((item)=> {
+      return { ...item, quantidade: 0}
+    })
+    this.setState({carrinho: carrinhoVazio});
+    this.setState({valorTotal: 0})
+  }
+
+
   render() {
 
     return (
@@ -223,7 +233,7 @@ class App extends React.Component {
             valorTotal={this.state.valorTotal}
             itensCarrinho={this.state.carrinho}
             onClick={this.removerItensdoCarrinho}
-          // onClick={this.state.clicou} 
+            limpaCarrinho={this.limpaCarrinho}
           />
 
           <Footer className="footer">
