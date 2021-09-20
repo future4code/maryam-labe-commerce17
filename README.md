@@ -14,7 +14,7 @@ Autoras: Laura Laurena, Mariana Souza e Stephanie Flávio.
 - Salvar dados do carrinho em Local Storage
 
 ### Link Surge 
-https://stormy-dirt.surge.sh/
+https://obese-zephyr.surge.sh/
 
 ### Imagens do Site
 ![image](https://user-images.githubusercontent.com/23243161/133993931-48c71744-3bde-4450-8de9-137dc3c9fb7f.png)
